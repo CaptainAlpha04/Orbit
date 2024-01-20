@@ -1,12 +1,20 @@
 body{
-    padding: 1svh;
+    margin: 0;
+    padding: 0;
     background-repeat: no-repeat;
     background-size: fit;
+    overflow: hidden;   
+}
+.main{
     display: flex;
     flex-direction: column;  
     align-items: center;
     justify-items: center;
-    text-shadow: 0.1svh 0.1svh 1svw rgb(61, 61, 61);
+    padding: 1svh;
+    background-color: rgba(0,0,0, 0.5);
+    height: 100svh;
+    width: 100svw;
+    backdrop-filter: blur(10px);
 }
 .timeData{
     color: white;
@@ -25,12 +33,53 @@ body{
     padding-left: 0.4rem;
 }
 #quote{
-    font-family: 'Noto Serif', serif;
-    font-size: 1.2rem;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.1rem;
     max-height: 10svh;
-    max-width: 60svw;
+    max-width: 80svw;
     align-self: center;
     color: white;
-    font-weight: 400;
-    margin-top: -2svh;
+    font-weight: 500;
+    margin-top: -3svh;
+    text-align: center;
+}
+.search{
+    background-color: whitesmoke;
+    height: 5.6svh;
+    width: 50svw;
+    display: flex;
+    border-radius: 0.5rem;
+    align-content: center;
+    margin-top: 2svh;
+}
+#searchBox{
+    border: none;
+    width: 45svw;
+    position: relative;
+    border-radius: 0.5rem 0 0 0.5rem;
+    padding: 0.8rem;
+    font-family: 'Raleway', sans-serif;
+    font-family: 700;
+    font-size: 0.9rem;
+}
+
+#gptSearch{
+    background-color: black;
+    border: none;
+    border-radius: 0 0.3rem 0.3rem 0;
+    width: 5svw;
+    transition: background-color 1s cubic-bezier(0.14, -1.24, 0, 1.77);
+    cursor: pointer;
+}
+
+#gptSearch img{
+    position: relative;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+#gptSearch:hover{
+    background-color: #19c37d;
+}
+#gptSearch:active{
+    background-color: #19c37d;
 }

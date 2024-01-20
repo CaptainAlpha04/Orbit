@@ -5,52 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800;1,900&family=Oswald:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800;1,900&family=Oswald:wght@200;300;400;600;700&family=Raleway:ital,wght@0,100;0,300;0,600;0,700;1,200;1,300;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Orbit | Dashboard</title>
 </head>
 <body>
-    <section class="timeData">
-        <h1 id="time"></h1>
-        <h2 id="period"></h2>
-    </section>
-    <section class="quoteSection">
-        <h1 id="quote">"Brevity is the soul of the Wit" - William Shakespear</h1>
+    <section class="main">
+        <section class="timeData">
+            <h1 id="time"></h1>
+            <h2 id="period"></h2>
+        </section>
+            <h1 id="quote"></h1>
+            <div class="search">
+                <input type="text" id="searchBox" placeholder="Type anything to Search!">
+                <button id="gptSearch"><img src="resources/chatgpt.png"></button>
+            </div>
     </section>
 </body>
-<script>
-    document.addEventListener("DOMContentLoaded", updateBackground)
-document.addEventListener("DOMContentLoaded", fetchQuote)
-function updateBackground() {
-    
-    let seed = Math.ceil(Math.random() * 1000); 
-    const imageUrl = `https://picsum.photos/id/${seed}/1440/720.jpg`;
-    document.body.style.backgroundImage = `url('${imageUrl}')`;
-} 
-
-function updateDigitalClock() {
-
-    const now = new Date();
-    const hours = ((now.getHours()+11) % 12 + 1).toString().padStart(2, '0');
-    const minutes = now.getMinutes().toString().padStart(2, '0');
-    const meridian = now.getHours >= 12? 'AM' : 'PM';
-    
-    document.getElementById('time').textContent = `${hours}:${minutes}`;
-    document.getElementById('period').textContent = `${meridian}`;
-}
-
-async function fetchQuote() {
-    try {
-        const response = await fetch('/quote');
-        const data = await response.json();
-        document.getElementById('quote').innerText = await data.quote;
-        
-    } catch (error) {
-        console.error('Error fetching quote:', error.message);
-    }
-}
-
-setInterval(updateDigitalClock, 1000);
-updateDigitalClock();
+<script src="static/client.js">
 </script>
 </html>

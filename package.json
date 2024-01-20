@@ -1,0 +1,24 @@
+{
+  "name": "orbit-dashboard",
+  "version": "0.0.1",
+  "description": "A helpful self-tracking and dashboard web app",
+  "main": "app.mjs",
+  "scripts": {
+    "start": "nodemon app.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CaptainAlpha04/Orbit.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CaptainAlpha04/Orbit/issues"
+  },
+  "homepage": "https://github.com/CaptainAlpha04/Orbit#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^3.0.3",
+    "openai": "^4.24.7"
+  }
+}

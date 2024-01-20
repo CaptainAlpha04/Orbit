@@ -6,8 +6,8 @@ const app = express()
 const port = 5000
 
 const openai = new OpenAI({
-    organization: 'org-JbDDShx15snJaavwnGXH5LUa',
-    apiKey: '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',
+    organization: 'YOUR_ORGANIZATION_KEY',
+    apiKey: 'YOUR_API_KEY',
   });
   
   async function getChatCompletion(p) {
@@ -35,13 +35,11 @@ app.get('/', (req, res) => {
 
 
 app.get('/quote', async (req, res) => {
-    
-    const topic = "Failure"
-    const p = `You are a wise and helpful quote generator. your goal is to give quotes of the greatest people who ever lived as well as anonymous people. Please give only single quote at a time. give quotes on ${topic}. the quotes should be unique and new everytime`;
+  
+    const p = `You are a wise and helpful quote generator. your goal is to give quotes of the greatest people who ever lived as well as anonymous people. Please give only single quote at a time. give quotes on various and diverse topics. the quotes should be unique and new everytime and lesser known. the quotes should be short`;
     try {
       const quote = await getChatCompletion(p);
       res.json({quote});
-      console.log(quote)
     } catch (error) {
       console.error('Error getting quote:', error.message);
       res.status(500).json({ error: 'Internal Server Error' });

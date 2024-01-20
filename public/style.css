@@ -80,3 +80,6 @@ body{
 #gptSearch:hover{
     background-color: #19c37d;
 }
+#gptSearch:active{
+    background-color: #19c37d;
+}

@@ -17,11 +17,41 @@
         </section>
             <h1 id="quote"></h1>
             <div class="search">
-                <input type="text" id="searchBox" placeholder="Type anything to Search!">
-                <button id="gptSearch"><img src="resources/chatgpt.png"></button>
+                <input type="text" id="searchBox" onkeypress="submitQuery(event)" placeholder="Type anything to Search!">
+                <button id="gptSearch" onclick="gptMode(false)"><img src="resources/chatgpt.png"></button>
             </div>
     </section>
-</body>
+    <section id="gptFocus">
+        <div class="FocusHead">
+            <img src="resources/chatgpt.png" alt="ChatGPT" class=FocusLogo>
+            <h1 onclick="gptSite()">ChatGPT</h1>
+            <img src="resources/close.png" alt="X" id="closeBtn" onclick="closeGPTMode()">
+        </div>
+        <section class="chatArea">
+            <div id="gptInstructs">
+                <h1>This GPT can do:</h1>   
+                <p>Information Search till 2021</p>
+                <p>Basic Mathematical Calculations</p>
+                <h1>The GPT can't do:</h1>
+                <p>Save Previous History</p>
+                <p>Check Online sources</p>
+                <p>Code or write professional writings</p>
+                <h1>To Perform such tasks, click on the ChatGPT on Top to access the actual version</h1>
+            </div> 
+        </section>
+        <div id="chat">
+            <input type="text" id="chatBox" placeholder="Type anything to Chat!" onkeypress="submitChat(event)">
+            <button id="chatSubmit" onclick="fetchChatRes()"><img src="resources/chatgpt.png">Send!</button>
+        </div>
+        </section>
+        <div id="user"></div>
+        <div id="bot"></div>   
+        <div class="spinner" aria-busy="true">
+            <span class="bubble1"></span>
+            <span class="bubble2"></span>
+            <span class="bubble3"></span>
+          </div>
+        </body>
 <script src="static/client.js">
 </script>
 </html>

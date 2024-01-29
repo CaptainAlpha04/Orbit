@@ -2,6 +2,8 @@ import express from 'express'
 import OpenAI from 'openai'
 import path from 'path'
 import keys from './keys.js'
+import newsApi from 'newsapi'
+
 
 const app = express()
 const port = 5000

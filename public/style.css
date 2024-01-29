@@ -20,6 +20,9 @@ body{
     color: white;
     display: flex;
     align-items: baseline;
+    opacity: 100;
+    transition: opacity 0.5s ease;
+    
 }
 .timeData h1{
     font-family: 'Oswald',sans-serif;
@@ -32,16 +35,37 @@ body{
     font-weight: 400;
     padding-left: 0.4rem;
 }
+
+.timeData:hover ~ #date{
+    visibility: visible;
+    opacity: 100;
+}
+
+#date{
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;  
+    font-weight: 400;
+    margin-top: -13svh;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.timeData:hover {
+    opacity: 0;
+}
+
 #quote{
     font-family: 'Raleway', sans-serif;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     max-height: 10svh;
     max-width: 80svw;
     align-self: center;
     color: white;
     font-weight: 500;
-    margin-top: -3svh;
     text-align: center;
+    margin-top: -12svh;
 }
 .search{
     background-color: whitesmoke;
@@ -50,7 +74,12 @@ body{
     display: flex;
     border-radius: 0.5rem;
     align-content: center;
-    margin-top: 2svh;
+    box-shadow: none;
+    transition: box-shadow 0.3s ease;
+}
+
+.search:hover {
+    box-shadow: rgb(37, 37, 37) 1svh 1svw 2rem;
 }
 
 #searchBox{
@@ -60,7 +89,8 @@ body{
     border-radius: 0.5rem 0 0 0.5rem;
     padding: 0.8rem;
     font-family: 'Raleway', sans-serif;
-    font-family: 700;
+    color: black;
+    font-weight: 600;
     font-size: 0.9rem;
 }
 
@@ -137,6 +167,7 @@ body{
     text-align: center;
     justify-items: center;
 }
+
 #gptInstructs h1{
     font-size: 1.5em;
     color: #19c37d;
@@ -164,6 +195,7 @@ body{
     font-family: 'Raleway', sans-serif;
     font-weight: 600;
 }
+
 #chatSubmit {
     background-color: #000;
     border: none;
@@ -237,7 +269,7 @@ body{
     margin: 1svw;
 }
   
-  .spinner > span {
+.spinner > span {
     width: 0.6rem;
     height: 0.6rem;
     background-color: transparent;
@@ -263,4 +295,213 @@ body{
   @keyframes pulse {
     0%, 80%, 100% { transform: scale(0.6); opacity:0.2; }
     40% { transform: scale(1.0); opacity:1; }
+}
+
+#linkContainer{
+    width: 80svw;
+    height: 11svh;
+    max-width: 80svw;
+    margin: 2svh;
+    display: flex;
+    gap: 2svw;
+    justify-content: center;
+    color: white;
+}
+
+.linkBox{
+    height: 8svh;
+    margin: 0.5svh;
+    width: 8svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 2svh;
+    cursor: pointer;
+}
+
+.linkImg {
+    height: 6svh;
+    width: 6svh;
+    border-radius: 2svh;
+}
+
+.linkText {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    margin-top: 2svh;
+}
+
+#addBox{
+    height: 7svh;
+    margin: 0.5svh;
+    width: 7svh;
+    display: flex;
+    background-color: rgba(0,0,0, 0.5);
+    flex-direction: column;
+    align-items: center;
+    border-radius: 2svh;
+    cursor: pointer;
+}
+
+#addImg {
+    height: 3svh;
+    width: 3svh;
+    margin-top: 2svh;
+}
+
+#addText {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    margin-top: 3svh;
+}
+
+#addLinkDialog{
+    height: 40svh;
+    width: 20svw;
+    background-color: rgba(0,0,0, 0.6);
+    backdrop-filter: blur(50px);
+    transform: translate(40svw, -276svh);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.7s ease;
+    padding: 1svh;
+    align-items: center;
+    justify-items: center;
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    border-radius: 1rem;
+    padding: 0.5rem;
+}
+#addressText{
+    border: none;
+    width: 18svw;
+    padding: 0.4rem;
+    border-radius: 0.5svh;
+    background-color: transparent;
+    border-bottom: #19c37d 2px solid;
+    color: white;
+    font-family: 'Raleway', sans-serif;
+}
+
+#nameText{
+    border: none;
+    width: 18svw;
+    padding: 0.4rem;
+    border-radius: 0.5svh;
+    background-color: transparent;
+    border-bottom: #19c37d 2px solid;
+    color: white;
+    font-family: 'Raleway', sans-serif;
+}
+#addLinkDialog button{
+    margin-top: 4svh;
+    margin-left: 1svw;
+    height: 4svh;
+    width: 8svw;
+    background-color: wheat;
+    border: none;
+    border-radius: 2svh;
+    color: black;
+    cursor: pointer;
+}
+
+.deleteLink {
+    height: 2vh;
+    width: 2svh;
+    position: relative;
+    transform: translate(2.5svw, 0);
+    margin-bottom: -2svh;
+    visibility: hidden;
+}
+
+.linkBox:hover > .deleteLink{
+    visibility: visible;
+}
+
+#zenMode {
+    height: 10svh;  
+    width: 15svw;   
+    display: flex;
+    padding: 1svh;
+    position: relative;
+    align-items: center;
+    justify-content: flex-start;
+    transform: translate(-42svw, -18svh);
+    color: white;  
+    font-family: 'Cookie', cursive;
+    font-size: 1.3rem;
+    z-index: 1;
+}
+
+#zenMode img{
+    position: relative;
+    height: 4svh;
+    width: auto;
+    filter: grayscale(1);
+    transition: filter 0.5s ease;
+    margin-left: -1svh;
+}
+
+#zenMode h2{
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+#zenMode:hover > h2{
+    visibility: visible;
+    opacity: 100;
+
+}
+
+#zenMode:hover > img{
+    filter:grayscale(0);
+}
+
+#zenActive {
+    height: 100svh;
+    width: 100svw;
+    background-color: rgba(0,0,0, 0.6);
+    backdrop-filter: blur(50px);
+    transform: translate(0svw, -204svh);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.7s ease;
+    display: flex;
+    padding: 1svh;
+    align-items: center;
+    justify-items: center;
+    flex-direction: column;
+    justify-content: center;
+    color: white;   
+}
+#zenActive h1{
+    font-family: 'Oswald', sans-serif;
+    font-size: 7rem;
+    margin-top: -17svh;
+}
+#zenPeriod{
+    font-family: 'Raleway', sans-serif;
+    transform: translate(6svw, -26svh);
+}
+
+#zenDate{
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.5rem;  
+    margin-top: -20svh;
+    font-weight: 500;
+}
+
+#zenClose{
+    height: 3rem;
+    width: 7rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 2rem;  
+    font-size: 1rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
 }

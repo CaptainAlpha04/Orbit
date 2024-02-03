@@ -1,93 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800;1,900&family=Oswald:wght@200;300;400;600;700&family=Raleway:ital,wght@0,100;0,300;0,600;0,700;1,200;1,300;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cookie&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800;1,900&family=Oswald:wght@200;300;400;600;700&family=Raleway:ital,wght@0,100;0,300;0,600;0,700;1,200;1,300;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
     <title>Orbit | Dashboard</title>
-</head>
-<body>
+  </head>
+  <body>
     <section class="main">
-        <section class="timeData">
-            <h1 id="time"></h1>
-            <h2 id="period"></h2>
-        </section>
-        <h4 id="date"></h4>
-        <div id="zenMode" onclick="zenModeActive()">
-            <img src="resources/zen-mode.png" alt="ZenModeLogo">
-            <h2> Zen Mode</h2>
+      <section class="timeData">
+        <h1 id="time"></h1>
+        <h2 id="period"></h2>
+      </section>
+      <h4 id="date"></h4>
+      <div id="zenMode" onclick="zenModeActive()">
+        <img src="resources/zen-mode.png" alt="ZenModeLogo" />
+        <h2>Zen Mode</h2>
+      </div>
+
+      <h1 id="quote"></h1>
+      <div class="search">
+        <input
+          type="text"
+          id="searchBox"
+          onkeypress="submitQuery(event)"
+          placeholder="Type anything to Search!"
+        />
+        <button id="gptSearch" onclick="gptMode()">
+          <img src="resources/chatgpt.png" />
+        </button>
+      </div>
+      <div id="linkContainer">
+        <div id="addBox" draggable="false" onclick="addSite()">
+          <img src="resources/plus.png" id="addImg" draggable="false" />
+          <h1 id="addText">Add</h1>
         </div>
- 
-        <h1 id="quote"></h1>
-            <div class="search">
-                <input type="text" id="searchBox" onkeypress="submitQuery(event)" placeholder="Type anything to Search!">
-                <button id="gptSearch" onclick="gptMode()"><img src="resources/chatgpt.png"></button>
-            </div>
-            <div id="linkContainer"> 
-                <div id="addBox" draggable="false" onclick="addSite()">
-                    <img src="resources/plus.png" id="addImg" draggable="false">
-                    <h1 id="addText">Add</h1>
-                </div>
-            </div>  
+      </div>
+      <div class="container">
+        <div class="header">
+          <h2>TO DO List</h2>
+        </div>
+
+        <input
+          id="task-input"
+          class="task-input"
+          type="text"
+          placeholder="Enter a task"
+        />
+        <button id="add-btn">Add Task</button>
+        <ul id="task-list" class="task-list"></ul>
+      </div>
     </section>
-<section id="gptFocus">
-        <div class="FocusHead">
-            <img src="resources/chatgpt.png" alt="ChatGPT" class=FocusLogo>
-            <h1 onclick="gptSite()">ChatGPT</h1>
-            <img src="resources/close.png" alt="X" id="closeBtn" onclick="closeGPTMode()">
+    <section id="gptFocus">
+      <div class="FocusHead">
+        <img src="resources/chatgpt.png" alt="ChatGPT" class="FocusLogo" />
+        <h1 onclick="gptSite()">ChatGPT</h1>
+        <img
+          src="resources/close.png"
+          alt="X"
+          id="closeBtn"
+          onclick="closeGPTMode()"
+        />
+      </div>
+      <section class="chatArea">
+        <div id="gptInstructs">
+          <h1>This GPT can do:</h1>
+          <p>Information Search till 2021</p>
+          <p>Basic Mathematical Calculations</p>
+          <h1>The GPT can't do:</h1>
+          <p>Save Previous History</p>
+          <p>Check Online sources</p>
+          <p>Code or write professional writings</p>
+          <h1>
+            To Perform such tasks, click on the ChatGPT on Top to access the
+            actual version
+          </h1>
         </div>
-        <section class="chatArea">
-            <div id="gptInstructs">
-                <h1>This GPT can do:</h1>   
-                <p>Information Search till 2021</p>
-                <p>Basic Mathematical Calculations</p>
-                <h1>The GPT can't do:</h1>
-                <p>Save Previous History</p>
-                <p>Check Online sources</p>
-                <p>Code or write professional writings</p>
-                <h1>To Perform such tasks, click on the ChatGPT on Top to access the actual version</h1>
-            </div> 
-        </section>
-        <div id="chat">
-            <input type="text" id="chatBox" placeholder="Type anything to Chat!" onkeypress="submitChat(event)">
-            <button id="chatSubmit" onclick="fetchChatRes()"><img src="resources/chatgpt.png">Send!</button>
-        </div>
-        </section>
-        <section id="zenActive">
-            <h1 id="zenHour"></h1>
-            <h1 id="zenMin"></h1>
-            <h2 id="zenPeriod"></h2>
-            <h2 id="zenDate"></h2>
-            <button id="zenClose" onclick="zenClose()">Exit</button>
-        </section>
-        
-        <div id="addLinkDialog">
-            <h4>Website Name: </h4>
-            <input type="text" id="nameText">
-            <h4>Website Address: </h4>
-            <input type="text" id="addressText">
-            <button onclick="cancelDialog()">Cancel</button>
-            <button onclick="linkAdd()">Okay</button>
-        </div>
-        
-        <div id="user"></div>
-        <div id="bot"></div>  
-        <div id="linkBox" class="linkBox" draggable="true">
-            <img src="resources/close.png" class="deleteLink" onclick="deleteLink(this)">
-            <img src="" class="linkImg" draggable="false">
-            <h1 class="linkText">ChatGPT</h1>
-        </div> 
-        <div class="spinner" aria-busy="true">
-            <span class="bubble1"></span>
-            <span class="bubble2"></span>
-            <span class="bubble3"></span>
-          </div>
-        </body>
-<script src="static/client.js">
-</script>
+      </section>
+      <div id="chat">
+        <input
+          type="text"
+          id="chatBox"
+          placeholder="Type anything to Chat!"
+          onkeypress="submitChat(event)"
+        />
+        <button id="chatSubmit" onclick="fetchChatRes()">
+          <img src="resources/chatgpt.png" />Send!
+        </button>
+      </div>
+    </section>
+    <section id="zenActive">
+      <h1 id="zenHour"></h1>
+      <h1 id="zenMin"></h1>
+      <h2 id="zenPeriod"></h2>
+      <h2 id="zenDate"></h2>
+      <button id="zenClose" onclick="zenClose()">Exit</button>
+    </section>
+
+    <div id="addLinkDialog">
+      <h4>Website Name:</h4>
+      <input type="text" id="nameText" />
+      <h4>Website Address:</h4>
+      <input type="text" id="addressText" />
+      <button onclick="cancelDialog()">Cancel</button>
+      <button onclick="linkAdd()">Okay</button>
+    </div>
+
+    <div id="user"></div>
+    <div id="bot"></div>
+    <div id="linkBox" class="linkBox" draggable="true">
+      <img
+        src="resources/close.png"
+        class="deleteLink"
+        onclick="deleteLink(this)"
+      />
+      <img src="" class="linkImg" draggable="false" />
+      <h1 class="linkText">ChatGPT</h1>
+    </div>
+    <div class="spinner" aria-busy="true">
+      <span class="bubble1"></span>
+      <span class="bubble2"></span>
+      <span class="bubble3"></span>
+    </div>
+  </body>
+  <script src="static/client.js"></script>
 </html>

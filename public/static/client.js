@@ -347,3 +347,41 @@ taskList.addEventListener("click", function (e) {
     deleteTask(e);
   }
 });
+async function fetchSportsData() {
+  try {
+    const response = await fetch(
+      "https://www.thesportsdb.com/api/v1/json/3/all_sports.php"
+    );
+    const data = await response.json();
+    displaySportsInfo(data);
+  } catch (error) {
+    console.error("Error fetching sports data:", error);
+  }
+}
+
+// Function to display sports information
+function displaySportsInfo(data) {
+  const sportsInfoContainer = document.getElementById("sports-info");
+
+  // Customize this part based on the structure of your API response
+  const sportsList = data.sports || [];
+
+  if (sportsList.length > 0) {
+    const sportsInfoHTML = sportsList
+      .map(
+        (sport) => `
+  <h2>${sport.strSport}</h2>
+  <p>Sport Description: ${sport.strSportDescription}</p>
+  <hr>
+`
+      )
+      .join("");
+
+    sportsInfoContainer.innerHTML = sportsInfoHTML;
+  } else {
+    sportsInfoContainer.innerHTML = "<p>No sports data available.</p>";
+  }
+}
+
+// Call the function to fetch and display sports data
+fetchSportsData();

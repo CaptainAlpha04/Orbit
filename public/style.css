@@ -510,12 +510,15 @@ body {
   font-weight: 700;
   cursor: pointer;
 }
+.flex {
+  display: flex;
+  flex-direction: row;
+}
 .container {
   transition: all 0.5s;
   color: white;
   max-width: 156px;
   padding: 20px;
-  margin-right: 400px;
   background-color: #fff;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   background-image: linear-gradient(
@@ -596,4 +599,28 @@ body {
   border: none;
   width: 90px;
   height: 25px;
+}
+.sports {
+  transition: all 0.5s;
+  box-sizing: border-box;
+  padding-left: 10px;
+  padding-top: 10px;
+  width: 150px;
+  height: 100px;
+  background-image: linear-gradient(to right bottom, green, white);
+  border-radius: 4px;
+  margin: 40px;
+}
+.sports:hover {
+  color: white;
+  font-size: 25px;
+  font-weight: 700;
+  box-shadow: 0px 0px 5px 2px lightskyblue;
+  width: 160px;
+  height: 110px;
+  background-image: url(/resources/sp.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 4px;
 }

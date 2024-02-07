@@ -304,7 +304,6 @@ const taskInput = document.getElementById("task-input");
 const addBtn = document.getElementById("add-btn");
 const taskList = document.getElementById("task-list");
 
-// Add task function
 function addTask() {
   const task = taskInput.value;
   if (task.trim() === "") return;
@@ -320,7 +319,6 @@ function addTask() {
   taskInput.value = "";
 }
 
-// Edit task function
 function editTask(e) {
   const taskSpan = e.target.previousElementSibling;
   const newTask = prompt("Edit task:", taskSpan.innerText);
@@ -330,14 +328,12 @@ function editTask(e) {
   }
 }
 
-// Delete task function
 function deleteTask(e) {
   if (e.target.classList.contains("delete-btn")) {
     e.target.parentElement.remove();
   }
 }
 
-// Event listeners
 addBtn.addEventListener("click", addTask);
 
 taskList.addEventListener("click", function (e) {
@@ -359,11 +355,9 @@ async function fetchSportsData() {
   }
 }
 
-// Function to display sports information
 function displaySportsInfo(data) {
   const sportsInfoContainer = document.getElementById("sports-info");
 
-  // Customize this part based on the structure of your API response
   const sportsList = data.sports || [];
 
   if (sportsList.length > 0) {
@@ -383,5 +377,33 @@ function displaySportsInfo(data) {
   }
 }
 
-// Call the function to fetch and display sports data
 fetchSportsData();
+
+async function fetchFinanceData() {
+  const url =
+    "https://apidojo-yahoo-finance-v1.p.rapidapi.com/auto-complete?q=tesla&region=US";
+  const options = {
+    method: "GET",
+    headers: {
+      "X-RapidAPI-Key": "2d80796147mshb4c58a4073ad507p186f21jsn83f3fdd13b81",
+      "X-RapidAPI-Host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
+    },
+  };
+
+  try {
+    const response = await fetch(url, options);
+    const result = await response.json();
+    console.log(result);
+
+    const financeBox = document.getElementById("financeBox");
+    financeBox.innerHTML = `
+    <p>Symbol: ${result.quotes[0].symbol}</p>
+    <p>Name: ${result.quotes[0].shortname}</p>
+    <p>Price: ${result.quotes[0].regularMarketPrice}</p>
+  `;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+fetchFinanceData();
